@@ -236,7 +236,7 @@ def questionTwo(event):
 
 questionTwoButton=Button(root, text="example 2")
 questionTwoButton.grid(row=2,column=1)
-questionTwoButton.bind("<Bitton-1>",questionTwo)
+questionTwoButton.bind("<Button-1>",questionTwo)
 questionTwoButton.place()
 
 root.mainloop()
