@@ -1,16 +1,10 @@
-#—оздать запись —трана следующей структуры: Ќазвание, столица, количество населени€. Ќаписать программу, реализующую следующее меню: 
-#Х	добавить элемент в файл
-#Х	удалить элемент из файла
-#Х	принадлежность элемента файлу
-#Х	вывод всех записей на экран
-
-
 
 from ast import Str
 from calendar import c
 from msilib import Table
 from msilib.schema import File
 from re import L
+from sre_parse import State
 from tkinter import *
 from tkinter import filedialog
 from tokenize import String
@@ -131,6 +125,37 @@ def searchField(event):
     searchPanel=Tk()
     searchPanel.title("search Panel")
 
+    
+    def clearTable():
+        j=0
+        joject=searchPanel.winfo_children()
+        for i in joject:
+            if(j>3):i.destroy()
+            else:j+=1
+
+    def search(event):
+        clearTable()
+        fn=open("bd.txt","r")
+        i=4
+        while(True):
+            a=fn.readline()
+            sr=a.split(";")
+            if(sr[0].lower()==searchEnter.get().lower()):
+                Label(searchPanel,text="country name").grid(row=3,column=1)
+                Label(searchPanel,text="central city").grid(row=3,column=2)
+                Label(searchPanel,text="population").grid(row=3,column=3)
+                j=0
+                
+                for info in sr:
+                    j+=1
+                    Label(searchPanel,text=info).grid(row=i,column=j)
+                i+=1
+                
+                
+
+            if(a==-1 or a==''):break
+
+
     resultLabel=Entry(searchPanel,background=color(175f, 186.0, 73.0))   
     resultLabel.grid(row=5,column=1)
     
@@ -146,9 +171,6 @@ def searchField(event):
 
             if(a==-1 or a==''):break
 
-
-    
-
     Label(searchPanel,text="enter name").grid(row=1,column=1)
 
     searchEnter=Entry(searchPanel)
@@ -160,6 +182,47 @@ def searchField(event):
 
     searchPanel.mainloop()
 
+
+
+
+def seeAll(event):
+
+    seePanel=Tk()
+    seePanel.title("table with all Data")
+    refreshButton=Button(seePanel,text="refresh")
+    
+    
+
+    def default():
+        fn=open("bd.txt","r")
+        Label(seePanel,text="Name Country").grid(row=1,column=1)
+        Label(seePanel,text="Central city").grid(row=1,column=2)
+        Label(seePanel,text="Population").grid(row=1,column=3)
+        j=1
+        while(True):
+            j+=1;
+            a=fn.readline()
+
+            if(a==-1 or a==''):break
+
+            sr=a.split(";")     
+            i=0
+            for info in sr:
+                i+=1
+                Label(seePanel,text=info).grid (row=j,column=i )
+
+    def clearTable(event):
+        j=0
+        joject=seePanel.winfo_children()
+        for i in joject:
+            if(j>0):i.destroy()
+            else:j+=1
+        default()
+        
+    default()
+
+    refreshButton.grid()
+    refreshButton.bind("<Button-1>",clearTable)
 
 
 root = Tk("nice soft from russia")
@@ -178,6 +241,21 @@ searchButton=Button(root, text = "Check in file")
 searchButton.grid(row=1,column = 3)
 searchButton.bind("<Button-1>",searchField)
 searchButton.place()
+
+
+seaAll=Button(root, text = "See all")
+seaAll.grid(row=1,column = 4)
+seaAll.bind("<Button-1>",seeAll)
+seaAll.place()
+
+def questionTwo(event):
+
+    pass
+
+questionTwoButton=Button(root, text="example 2")
+questionTwoButton.grid(row=2,column=1)
+questionTwoButton.bind("<Bitton-1>",questionTwo)
+questionTwoButton.place()
 
 Button(root, text = "See all").grid(row=1,column = 4)
 
