@@ -1,4 +1,3 @@
-
 from ast import Str
 from calendar import c
 from msilib import Table
@@ -155,22 +154,7 @@ def searchField(event):
 
             if(a==-1 or a==''):break
 
-
-    resultLabel=Entry(searchPanel,background=color(175f, 186.0, 73.0))   
-    resultLabel.grid(row=5,column=1)
     
-
-    def search(event):
-        fn=open("bd.txt","r")
-        while(True):
-            a=fn.readline()
-            sr=a.split(";")
-            if(sr[0]==searchEnter.get()):
-                resultLabel.delete(0,END)
-                resultLabel.insert(0,a)
-
-            if(a==-1 or a==''):break
-
     Label(searchPanel,text="enter name").grid(row=1,column=1)
 
     searchEnter=Entry(searchPanel)
@@ -224,7 +208,6 @@ def seeAll(event):
     refreshButton.grid()
     refreshButton.bind("<Button-1>",clearTable)
 
-
 root = Tk("nice soft from russia")
 root.title("im work but im tired")
 
@@ -242,7 +225,6 @@ searchButton.grid(row=1,column = 3)
 searchButton.bind("<Button-1>",searchField)
 searchButton.place()
 
-
 seaAll=Button(root, text = "See all")
 seaAll.grid(row=1,column = 4)
 seaAll.bind("<Button-1>",seeAll)
@@ -256,13 +238,5 @@ questionTwoButton=Button(root, text="example 2")
 questionTwoButton.grid(row=2,column=1)
 questionTwoButton.bind("<Bitton-1>",questionTwo)
 questionTwoButton.place()
-
-Button(root, text = "See all").grid(row=1,column = 4)
-
-
-
-#Button(root,text = "name").grid (row=2,column=1)
-#Button(root,text = "country").grid (row=2,column=2)
-#Button(root,text = "people").grid (row=2,column=3)
 
 root.mainloop()
