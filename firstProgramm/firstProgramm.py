@@ -221,9 +221,50 @@ seaAll.grid(row=1,column = 4)
 seaAll.bind("<Button-1>",seeAll)
 seaAll.place()
 
+
+#2.	Создать стек целых чисел на основе статического массива. Реализовать методы : Добавить элемент, удалить элемент, вершина стека.
 def questionTwo(event):
-    root = Tk()
-    root.title("woaw i think its label not reading somebody")
+    q2 = Tk()
+    q2.title("woaw i think its label not reading somebody")
+
+    try:import stepBrotherImSTACK as stackModule
+    except:q2.destroy()
+
+    stack = stackModule.stack()
+
+    enter = Entry(q2)
+    enter.grid(row=1,column=1)
+    enter.place()
+
+    def addInStack(event):
+        stack.push(int(enter.get()))
+        pass
+
+    def delInStack(event):
+        stack.pop()
+        pass
+
+    def seeInStack(event):
+        enter.__setitem__(str,stack.get())
+        pass
+
+    addButton  = Button (q2, text="adding")
+    addButton.grid(row=1,column=2)
+    addButton.bind("<Button-1>", addInStack)
+    addButton.place()
+
+    delButton  = Button (q2, text="delete")
+    delButton.grid(row=1,column=3)
+    delButton.bind("<Button-1>", delInStack)
+    delButton.place()
+
+    seeButton  = Button (q2, text="see")
+    seeButton.grid(row=1,column=4)
+    seeButton.bind("<Button-1>", seeInStack)
+    seeButton.place()
+
+
+    
 
 
     pass
