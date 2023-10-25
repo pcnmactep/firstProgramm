@@ -23,13 +23,6 @@ def AddField(event):
         fn = open("bd.txt", 'a')
         fn.write(name+";"+country+";"+people+";"+'\n')
         fn.close()
-        #fn = filedialog.SaveAs(root, filetypes = [('*.txt files', '.txt')]).show()
-        #if fn == '':
-        # return  
-        #if not fn.endswith(".txt"):
-        #    fn+=".txt"
-        #open(fn, 'wt').write()
-
         addPanel.destroy()
 
 
@@ -95,8 +88,6 @@ def delField(event):
         os.rename("bd.txt","oldBD.txt")
         os.rename("temp.txt","bd.txt")
         if(chck):msg("lmao")
-
-
 
         delPanel.destroy()
 
@@ -231,6 +222,9 @@ seaAll.bind("<Button-1>",seeAll)
 seaAll.place()
 
 def questionTwo(event):
+    root = Tk()
+    root.title("woaw i think its label not reading somebody")
+
 
     pass
 
