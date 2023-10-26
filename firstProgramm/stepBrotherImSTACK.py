@@ -3,6 +3,7 @@
 #int lenght=1
 #stack = []
 
+from ast import Delete
 from asyncio.windows_events import NULL
 
 class stack:
@@ -14,11 +15,17 @@ class stack:
         pass
     def pop(self):
         if (len(self.stack)==0): return None
-
         removed=self.stack.pop()
         return removed
+    def delete(self,item):
+       newstack=[]
+       for i in self.stack:
+           if(i!=int(item)):
+               newstack.append(i)
+       self.stack=newstack 
+       Delete(newstack)
+          
 
-    def get(self):
-        return self[len(self)]
+    
         
 
